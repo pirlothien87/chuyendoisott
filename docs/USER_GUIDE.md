@@ -11,8 +11,9 @@
 
 ## Luồng tối thiểu hiện tại
 1. Admin đăng nhập.
-2. Admin tạo user.
-3. Người dùng đăng nhập và kiểm tra task visibility tại `/tasks`.
+2. Admin vào `/admin/users` để tạo user mới.
+3. Admin có thể cập nhật role + trạng thái user (active/inactive/pending).
+4. Người dùng đăng nhập và kiểm tra task visibility tại `/tasks`.
 
 ## Tài khoản mặc định
 - superadmin@example.com / SuperAdmin@123

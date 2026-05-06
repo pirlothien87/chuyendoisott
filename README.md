@@ -33,3 +33,7 @@ docker compose --env-file .env.production up -d --build
 
 Đây là MVP backend/server-rendered để chốt logic nghiệp vụ chính và môi trường chạy.
 Các module lớn trong BA spec (contracts, import/export Excel, email gateway UI, logs, upload ảnh thực tế...) sẽ triển khai tiếp theo từng sprint.
+
+## Full business design
+- Xem tài liệu chi tiết tại `docs/BUSINESS_DESIGN.md`.
+
