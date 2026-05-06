@@ -1,20 +1,21 @@
-# Hướng dẫn sử dụng web
+# User guide
 
-## URL truy cập
-- Local/dev: `http://localhost:8000`
+## Đăng nhập
+- Truy cập `/login` và đăng nhập bằng email/password.
 
-## Đăng nhập mặc định (super admin)
-- Username: `superadmin`
-- Password: `SuperAdmin@123`
+## Quyền theo vai trò
+- **Admin**: vào `/admin/users` để tạo user; xem toàn bộ task.
+- **AM**: xem task trong tỉnh được gán.
+- **CTV**: chỉ xem task được assign trực tiếp.
+- **Accountant**: hiện tại có quyền đăng nhập, phần hợp đồng sẽ bổ sung theo sprint kế tiếp.
 
-> Sau lần đăng nhập đầu tiên trên production, bắt buộc đổi mật khẩu mặc định.
+## Luồng tối thiểu hiện tại
+1. Admin đăng nhập.
+2. Admin tạo user.
+3. Người dùng đăng nhập và kiểm tra task visibility tại `/tasks`.
 
-## Luồng sử dụng cơ bản
-1. Mở trang `/login`.
-2. Nhập tài khoản super admin.
-3. Sau khi đăng nhập thành công sẽ vào `/dashboard`.
-4. Bấm `Logout` để thoát phiên.
-
-## Lưu ý vận hành
-- Nếu quên mật khẩu mặc định đã đổi: reset trực tiếp trong DB hoặc tạo script admin reset.
-- Theo dõi log bằng `docker compose logs -f web`.
+## Tài khoản mặc định
+- superadmin@example.com / SuperAdmin@123
+- accountant@example.com / Accountant@123
+- am@example.com / Am@123456
+- ctv@example.com / Ctv@123456

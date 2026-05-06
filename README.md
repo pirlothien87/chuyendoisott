@@ -1,25 +1,35 @@
-# ChuyenDoiSoTT Web
+# Website quản lý tiến độ khảo nghiệm (MVP)
 
-Ứng dụng web mẫu có đăng nhập quản trị và dashboard đơn giản.
+Bản này đã cập nhật theo BA spec trọng tâm:
+- Đăng nhập email/password.
+- Vai trò `admin/accountant/am/ctv/viewer`.
+- Dùng **MySQL** thay cho SQLite.
+- Rule hiển thị task theo RBAC:
+  - Admin: thấy toàn bộ task.
+  - AM: chỉ thấy task thuộc tỉnh được phân công.
+  - CTV: chỉ thấy task được assign trực tiếp.
+- Admin có màn hình tạo user cơ bản.
 
-## Chạy nhanh với Docker Compose
+## Chạy nhanh bằng Docker Compose
 
+1. Tạo file env:
 ```bash
-cp .env.example .env
-docker compose up -d --build
+cp .env.example .env.production
 ```
+2. Chạy:
+```bash
+docker compose --env-file .env.production up -d --build
+```
+3. Mở web: `http://localhost:8000`
 
-Truy cập: `http://localhost:8000`
+## Tài khoản mặc định
 
-## Tài khoản mặc định (super admin)
+- Super admin: `superadmin@example.com / SuperAdmin@123`
+- Accountant: `accountant@example.com / Accountant@123`
+- AM: `am@example.com / Am@123456`
+- CTV: `ctv@example.com / Ctv@123456`
 
-- Username: `superadmin`
-- Password: `SuperAdmin@123`
+## Lưu ý phạm vi hiện tại
 
-> Đổi mật khẩu ngay khi chạy production.
-
-## Tài liệu
-
-- Hướng dẫn deploy: `docs/DEPLOY.md`
-- Hướng dẫn sử dụng: `docs/USER_GUIDE.md`
-thiennd
+Đây là MVP backend/server-rendered để chốt logic nghiệp vụ chính và môi trường chạy.
+Các module lớn trong BA spec (contracts, import/export Excel, email gateway UI, logs, upload ảnh thực tế...) sẽ triển khai tiếp theo từng sprint.
