@@ -234,10 +234,12 @@ def manage_users():
         role = request.form.get("role", "").strip()
         password = request.form.get("password", "")
         if name and email and role in ROLES and password:
-            exec_sql(
-                "INSERT INTO users(name,email,password_hash,role,status) VALUES(%s,%s,%s,%s,'active')",
-                (name, email, generate_password_hash(password), role),
-            )
+            existing = exec_sql("SELECT id FROM users WHERE email=%s", (email,), fetch=True)
+            if not existing:
+                exec_sql(
+                    "INSERT INTO users(name,email,password_hash,role,status) VALUES(%s,%s,%s,%s,'active')",
+                    (name, email, generate_password_hash(password), role),
+                )
     users = exec_sql("SELECT id,name,email,role,status FROM users ORDER BY id DESC", fetch=True)
     form = """
     <h2>Quản lý user</h2>
