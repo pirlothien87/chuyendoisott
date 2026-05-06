@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    container_name: chuyendoisott-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - app_data:/app/data
+
+volumes:
+  app_data:
